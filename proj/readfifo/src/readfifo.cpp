@@ -1,10 +1,5 @@
-
 // Linux
-#include <fcntl.h>
-#include <unistd.h>
-
-// Gnulib
-// #include "full-read.h"
+#include <unistd.h> // For read(2)
 
 // C++
 #include <algorithm>
@@ -18,6 +13,8 @@
 #include <thread>
 #include <vector>
 
+#include "fifo_utils.hpp"
+
 int main(int argc, char** argv) {
     if (not(argc == 2 or argc == 3)) {
         std::cout << "Usage: readfifo <relative/path/to/fifo> [how_many_reads]" << std::endl;
@@ -25,11 +22,7 @@ int main(int argc, char** argv) {
     }
 
     std::cout << "Opening fifo with path: " << argv[1] << std::endl;
-    auto fifo_end = open(argv[1], O_RDONLY);
-    if (fifo_end == -1) {
-        std::cout << "open(\"" << argv[1] << "\", O_RDONLY); failed!" << std::endl;
-        return 1;
-    }
+    auto fifo_end = fifo::open_fifo(argv[1]);
 
     auto whole_recv_buf = std::vector<std::byte>{};
 
@@ -70,10 +63,7 @@ int main(int argc, char** argv) {
     }
 
     std::cout << "Closing fifo..." << std::endl;
-    if (close(fifo_end) == -1) {
-        std::cout << "close(fifo) returned -1!" << std::endl;
-        return 1;
-    }
+    fifo::close_fifo(fifo_end);
 
     std::cout << "As whole got:" << std::endl;
     for (const auto x : whole_recv_buf) std::cout << static_cast<char>(x);
