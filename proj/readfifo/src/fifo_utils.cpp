@@ -1,3 +1,5 @@
+#include <config.h>
+
 #include "fifo_utils.hpp"
 
 #include <fcntl.h>

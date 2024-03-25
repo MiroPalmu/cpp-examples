@@ -1,3 +1,5 @@
+#include <config.h>
+
 // Linux
 #include <unistd.h> // For read(2)
 
