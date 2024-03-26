@@ -1,7 +1,9 @@
 #include <config.h>
 
-// Linux
-#include <unistd.h> // For read(2)
+// Gnulib
+extern "C" {
+    #include "full-read.h"
+}
 
 // C++
 #include <algorithm>
@@ -34,18 +36,23 @@ int main(int argc, char** argv) {
     for (;;) {
         std::cout << "Trying to read " << bytes_to_read << " bytes..." << std::endl;
 
-        const auto read_bytes = read(fifo_end, recv_buf.data(), bytes_to_read);
+        // full_read fron gnulib returns number of bytes succesfully read.
+        // If it is less than what was asked errno is set,
+        // s.t. errno = 0 means EOF.
+        const auto read_bytes = full_read(fifo_end, recv_buf.data(), bytes_to_read);
 
-        if (read_bytes == -1) {
-            std::cout << "read(...) returned -1 and set errno to " << errno << std::endl;
+        if (read_bytes < bytes_to_read) {
+            std::cout << "full_read(...) read less than it was asked, because of..." << std::endl;
+            if (errno == 0) {
+                std::cout << "...EOF!" << std::endl;
+                // At EOF
+                break;
+            }
+
+            std::cout << "...some error in errno: " << errno << std::endl;
             return 1;
         }
 
-        if (read_bytes == 0) {
-            std::cout << "At EOF" << std::endl;
-            // At EOF
-            break;
-        }
 
         std::cout << "Got " << read_bytes << " bytes!" << std::endl;
 
