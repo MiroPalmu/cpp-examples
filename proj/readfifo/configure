@@ -608,6 +608,7 @@ PACKAGE_STRING='reafifo_proj 0.0.1'
 PACKAGE_BUGREPORT='email@miropalmu.cc'
 PACKAGE_URL=''
 
+ac_unique_file="src/readfifo.cpp"
 # Factoring default headers for most tests.
 ac_includes_default="\
 #include <stddef.h>
@@ -2439,7 +2440,7 @@ as_fn_append ac_header_c_list " unistd.h unistd_h HAVE_UNISTD_H"
 ac_aux_files="compile missing install-sh"
 
 # Locations in which to look for auxiliary files.
-ac_aux_dir_candidates="${srcdir}${PATH_SEPARATOR}${srcdir}/..${PATH_SEPARATOR}${srcdir}/../.."
+ac_aux_dir_candidates="${srcdir}/build-aux"
 
 # Search for a directory containing all of the required auxiliary files,
 # $ac_aux_files, from the $PATH-style list $ac_aux_dir_candidates.
@@ -2600,6 +2601,15 @@ ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
 ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
+
+
+
+# From Autoconf manual 4.4 Configure Input:
+# https://www.gnu.org/software/autoconf/manual/autoconf-2.70/html_node/Input.html
+
+# As sanity check give unique file from project that configure will check.
+
+
 
 
 am__api_version='1.16'
@@ -3223,7 +3233,6 @@ END
     as_fn_error $? "Your 'rm' program is bad, sorry." "$LINENO" 5
   fi
 fi
-
 
 
 # Checks for programs.
