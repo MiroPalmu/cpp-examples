@@ -1,0 +1,8 @@
+Compile with:
+
+```
+g++ -std=c++23 $(pkg-config -cflags --libs Qt6Widgets) -fPIC -o memory_game main.cpp
+```
+
+Enviroment variable `MEMORY_GAME_OPT` (real number in [0, 1]),
+is used to control amount of boxes.
