@@ -1,0 +1,15 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "generator_range_adaptor.cpp",
+      "-std=c++26",
+      "-o",
+      "gra"
+    ],
+    "directory": "/home/pamiro/repos/cpp-examples/language",
+    "file": "/home/pamiro/repos/cpp-examples/language/generator_range_adaptor.cpp",
+    "output": "/home/pamiro/repos/cpp-examples/language/gra"
+  }
+]
