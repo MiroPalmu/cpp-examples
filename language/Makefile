@@ -1,4 +1,4 @@
-default_cxx_flags := -std=c++26 -g -O0 -fsanitize=address -fconcepts-diagnostics-depth=10
+default_cxx_flags := -std=c++26 -g -O0 -fsanitize=address,undefined -fconcepts-diagnostics-depth=10
 
 .PHONY: clean
 
