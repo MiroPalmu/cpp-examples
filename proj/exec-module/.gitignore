@@ -1,3 +1,4 @@
+build/
 gcm.cache
 *.o
 foo
