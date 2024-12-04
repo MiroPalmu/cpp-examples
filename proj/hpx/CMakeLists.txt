@@ -16,3 +16,11 @@ find_package(HPX REQUIRED)
 add_hpx_executable(hello
     SOURCES hello.cpp
     COMPONENT_DEPENDENCIES iostreams)
+
+add_executable(eg1 eg1.cpp)
+target_include_directories(eg1 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+find_package(TBB REQUIRED)
+# For some reason this needs to be linked with tbb.
+target_link_libraries(eg1 PRIVATE tbb)
+target_link_libraries(eg1 PRIVATE HPX::hpx)
