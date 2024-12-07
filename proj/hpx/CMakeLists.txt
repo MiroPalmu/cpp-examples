@@ -24,3 +24,7 @@ find_package(TBB REQUIRED)
 # For some reason this needs to be linked with tbb.
 target_link_libraries(eg1 PRIVATE tbb)
 target_link_libraries(eg1 PRIVATE HPX::hpx)
+
+add_executable(intrest-calculator dataflow-intrest-calculator.cpp)
+target_link_libraries(intrest-calculator PRIVATE tbb)
+target_link_libraries(intrest-calculator PRIVATE HPX::hpx)
