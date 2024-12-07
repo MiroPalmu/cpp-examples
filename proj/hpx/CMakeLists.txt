@@ -28,3 +28,11 @@ target_link_libraries(eg1 PRIVATE HPX::hpx)
 add_executable(intrest-calculator dataflow-intrest-calculator.cpp)
 target_link_libraries(intrest-calculator PRIVATE tbb)
 target_link_libraries(intrest-calculator PRIVATE HPX::hpx)
+
+add_executable(async-fibo async-fibo.cpp)
+target_link_libraries(async-fibo PRIVATE tbb)
+target_link_libraries(async-fibo PRIVATE HPX::hpx)
+
+add_executable(dataflow-fibo dataflow-fibo.cpp)
+target_link_libraries(dataflow-fibo PRIVATE tbb)
+target_link_libraries(dataflow-fibo PRIVATE HPX::hpx)
