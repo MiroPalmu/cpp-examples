@@ -36,3 +36,11 @@ target_link_libraries(async-fibo PRIVATE HPX::hpx)
 add_executable(dataflow-fibo dataflow-fibo.cpp)
 target_link_libraries(dataflow-fibo PRIVATE tbb)
 target_link_libraries(dataflow-fibo PRIVATE HPX::hpx)
+
+include(FetchContent)
+
+FetchContent_Declare(matplotplusplus
+        GIT_REPOSITORY https://github.com/alandefreitas/matplotplusplus
+        GIT_TAG origin/master) # or whatever tag you want
+
+FetchContent_MakeAvailable(matplotplusplus)
