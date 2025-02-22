@@ -23,8 +23,7 @@ syclutils::print_kernel_indecies() {
     constexpr int         size = 16;
     std::array<int, size> data;
     auto                  buff = sycl::buffer{ data };
-    std::println("Using sycl::cpu_selector_v because gpu backend will crash tonttu.");
-    auto q = sycl::queue{ sycl::cpu_selector_v };
+    auto                  q    = sycl::queue{};
 
     q.submit([&](sycl::handler& h) {
         auto acc = sycl::accessor{ buff, h };
