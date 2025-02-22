@@ -4,6 +4,7 @@ cmake_minimum_required(VERSION 3.30 FATAL_ERROR)
 
 # Modifying the compiler should be done before the project line
 # If default clang would have sycl:
+# https://github.com/llvm/llvm-project/pulls?q=is%3Apr+sycl+label%3ASYCL
 # set(CMAKE_CXX_COMPILER "clang++")
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsycl")
 
