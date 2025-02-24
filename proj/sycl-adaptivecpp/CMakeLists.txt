@@ -58,6 +58,18 @@ target_compile_features(syclutils
     cxx_std_26
 )
 
+add_library(sstd STATIC)
+target_sources(sstd
+    PUBLIC FILE_SET CXX_MODULES FILES
+    sstd.cpp
+)
+target_compile_features(sstd
+    PRIVATE
+    cxx_std_26
+    INTERFACE
+    cxx_std_26
+)
+
 # Make an executable.
 add_executable(main)
 
@@ -67,4 +79,4 @@ target_sources(main
     main.cpp
 )
 
-target_link_libraries(main PRIVATE syclutils)
+target_link_libraries(main PRIVATE syclutils sstd)
