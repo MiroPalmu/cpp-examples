@@ -34,7 +34,7 @@ main() {
         });
 
         // Third kernel: square each element, depends on e2
-        q.submit(&{
+        q.submit([&](sycl::handler& h){
             h.depends_on(e1);
             h.depends_on(e2);
             auto acc1 = buf1.get_access<sycl::access_mode::read_write>(h);
